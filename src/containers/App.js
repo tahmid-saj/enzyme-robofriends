@@ -5,6 +5,7 @@ import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 
 import ErrorBoundary from "../components/ErrorBoundary";
+import MainPage from "../components/MainPage";
 
 export default class App extends Component {
   constructor() {
@@ -31,29 +32,29 @@ export default class App extends Component {
   }
 
   render() {
-    const { robots, searchfield } = this.state;
+    // const { robots, searchfield } = this.state;
 
-    const filteredRobots = robots.filter(robot => {
-      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
-    })
+    // const filteredRobots = robots.filter(robot => {
+    //   return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+    // })
 
-    if (!robots.length) {
-      return <h1>Loading...</h1>
-    } else {
-      return (
-        <div className="tc">
-          <h1 className="f2">RoboFriends</h1>
-          <SearchBox searchChange={this.onSearchChange}/>
+    // if (!robots.length) {
+    //   return <h1>Loading...</h1>
+    // } else {
+    //   return (
+    //     <div className="tc">
+    //       <h1 className="f2">RoboFriends</h1>
+    //       <SearchBox searchChange={this.onSearchChange}/>
 
-          <Scroll>
-            <ErrorBoundary>
-              <CardList robots={filteredRobots}/>
-            </ErrorBoundary>
-          </Scroll>
-        </div>
-      );
-    }
+    //       <Scroll>
+    //         <ErrorBoundary>
+    //           <CardList robots={filteredRobots}/>
+    //         </ErrorBoundary>
+    //       </Scroll>
+    //     </div>
+    //   );
+    // }
 
-
+    return <MainPage { ...this.props }/>
   }
 };
