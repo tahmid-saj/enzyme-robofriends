@@ -3,7 +3,7 @@ import React from "react";
 import App from "../containers/App";
 import MainPage from "./MainPage";
 
-let wrapper, wrapper2;
+let wrapper, wrapper2, wrapper3;
 beforeEach(() => {
   const mockProps = {
     onRequestRobots: jest.fn(),
@@ -38,6 +38,25 @@ it('filters robots correctly', () => {
   wrapper2 = shallow(<MainPage { ...mockProps2 } />);
   expect(wrapper2.instance().filterRobots([])).toEqual([]);
   expect(wrapper2.instance().filterRobots([])).toEqual([]);
+});
+
+it('filters robots correctly 2', () => {
+  const mockProps3 = {
+    onRequestRobots: jest.fn(),
+    robots: [{
+      id: 3,
+      name: 'John',
+      email: 'john@gmail.com'
+    }],
+    searchField: '',
+    isPending: false
+  }
+
+  const filteredRobots = [];
+
+  wrapper3 = shallow(<MainPage { ...mockProps3 } />);
+  expect(wrapper3.instance().filterRobots([])).toEqual(filteredRobots);
+  expect(wrapper3.instance().filterRobots([])).toEqual([]);
 });
 
 // it('expect to render App component', () => {

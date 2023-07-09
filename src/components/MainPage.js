@@ -30,7 +30,7 @@ export default class MainPage extends Component {
     this.setState({ searchField: event.target.value });
   }
 
-  filterRobots = robots => {
+  filterRobots = (robots = this.robots) => {
     return robots.filter(robot => {
       return robot.name.toLowerCase().includes(this.props.searchField.toLowerCase());
     });
